@@ -33,7 +33,11 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.add(R.id.fragmentContainer, new WebViewFragment());
+                WebViewFragment webViewFragment = new WebViewFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("url", "http://shyri.es");
+                webViewFragment.setArguments(bundle);
+                transaction.add(R.id.fragmentContainer, webViewFragment );
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
